@@ -23,6 +23,16 @@ const Dashboard = () => {
 
   
   const users:UserState = useSelector((state: any) => state.users);
+  useEffect(()=>{
+    if(users.err){
+      setError(users.err)
+    }
+  },[users.err])
+
+
+  useEffect(()=>{
+    setUpdateId("")
+  },[users.users])
 
   const onSubmit = async (user:User)=>{
     let err = ""
@@ -35,26 +45,31 @@ const Dashboard = () => {
     if(isNaN(user.numberOfRents)){
       err = "Number of rents is invalid"
     }
-    let findUser = users.users?.find(e=>user?.id===updateId)
-    if(!findUser){
+    let findUser = {...users.users?.find(e=>e?.id===updateId)}
+    if(!findUser.id){
       err = "User not found"
     }
     if (err){
       setError(err)
     }else{
       findUser!.name = user.name
-      findUser!.totalAverageWeightRatings = user.totalAverageWeightRatings
+      const avgRating = Math.floor(user.totalAverageWeightRatings*100)/100
+      findUser!.totalAverageWeightRatings = avgRating
       findUser!.numberOfRents = user.numberOfRents
 
-      await updateUserAsync(user)
+      await dispatch(updateUserAsync(findUser as User))
     }
   }
 
   return (
     <Container>
+      <title>
+        User Dashboard
+      </title>
       <Button sx={{my:2}} onClick={()=>Logout()} variant="contained" color="error">Logout</Button>
       <TableContainer component={Paper}>
         <UpdateUserFormModal
+          user={users.users?.find(e=>e.id===updateId)}
           onClose={()=>setUpdateId("")}
           onSubmit={(onSubmit)}
           open={!!updateId}

@@ -22,12 +22,16 @@ export default function LoginPage() {
     
       router.push('/user')
     } catch (err) {
-      setError('Login failed')
+      setError('Please use email: williamkrav@gmail.com and password: 12345678')
     }
   }
 
   return (
     <Container maxWidth="sm" sx={{ display: 'flex', justifyContent: 'center', paddingTop: 8 }}>
+
+      <title>
+        Login
+      </title>
       <Paper sx={{paddingTop:2}}>
         <LoginForm
           error={error}

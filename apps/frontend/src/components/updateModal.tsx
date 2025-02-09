@@ -1,21 +1,34 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Modal, Box, TextField, Button, Typography } from "@mui/material";
 import { User } from "@monorepo/entities";
 
 interface Props {
   open: boolean
+  user?: User
   onClose: ()=>void
   onSubmit: (user:User)=>void
   error: string
 }
 
 const UpdateUserFormModal = (props:Props) => {
-  const { open,error, onClose, onSubmit } = props
+  const { open,user,error, onClose, onSubmit } = props
   const [formData, setFormData] = useState({
     name: "",
     weightAvg: 0,
     rentsCount: 0,
   });
+
+  useEffect(()=>{
+    
+    if(user){
+
+      setFormData({
+        name: user.name,
+        rentsCount: user.numberOfRents,
+        weightAvg: user.totalAverageWeightRatings,
+      })
+    }
+  },[user])
 
   const handleChange = (e:any) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -38,6 +51,7 @@ const UpdateUserFormModal = (props:Props) => {
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
+          backgroundColor:'white',
           width: 400,
           boxShadow: 24,
           p: 4,
@@ -53,6 +67,7 @@ const UpdateUserFormModal = (props:Props) => {
             value={formData.name}
             onChange={handleChange}
             required
+            sx={{mb:2,mt:1}}
           />
           <TextField
             fullWidth
@@ -62,6 +77,7 @@ const UpdateUserFormModal = (props:Props) => {
             value={formData.weightAvg}
             onChange={handleChange}
             required
+            sx={{mb:2}}
           />
           <TextField
             fullWidth
@@ -72,6 +88,7 @@ const UpdateUserFormModal = (props:Props) => {
             onChange={handleChange}
             margin="normal"
             required
+            sx={{mb:2}}
           />
             {error && (
             <Typography color="error" sx={{ textAlign: 'center', marginTop: 1 }}>
