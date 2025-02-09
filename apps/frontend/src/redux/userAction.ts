@@ -7,7 +7,6 @@ export const setUser = (user:User) => ({
   payload: user,
 });
 
-
 export const fetchUserAsync = ():any => async (dispatch:any) => {
   try {
     const response:User = await fetchUser();
