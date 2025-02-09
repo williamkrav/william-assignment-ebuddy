@@ -4,17 +4,27 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack --port 3000",
+    "dev": "next dev --turbopack --port 4001",
     "build": "next build",
     "start": "next start",
     "lint": "next lint --max-warnings 0",
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@monorepo/entities": "file:../../packages/shared/entities",
+    "@mui/material": "^6.4.3",
+    "@reduxjs/toolkit": "^2.5.1",
     "@repo/ui": "*",
+    "axios": "^1.7.9",
+    "firebase": "^11.3.0",
+    "mui": "^0.0.1",
     "next": "^15.1.6",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-redux": "^9.2.0",
+    "redux-thunk": "^3.1.0"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
