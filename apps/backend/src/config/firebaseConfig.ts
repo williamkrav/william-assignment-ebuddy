@@ -7,6 +7,7 @@ dotenv.config();
 const serviceAccount = JSON.parse(process.env.SERVICE_ACCOUNT as string);
 
 admin.initializeApp({
+  // credential: admin.credential.cert(serviceAccount),
   credential: admin.credential.applicationDefault(),
   projectId:"e-buddy-technical-test-51cdb",
 });
