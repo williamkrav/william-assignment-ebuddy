@@ -15,7 +15,8 @@ This project is structured as a **TurboRepo** with the following components:
 ## How to Run
 1. Use **Node.js version 23** (recommended).
 2. Copy `.env.example` to `.env` in both **backend** and **frontend** directories.
-3. Open **two terminals**:
+3. Run **npm install**
+4. Open **two terminals**:
    - In the first terminal, run:
      ```sh
      npm run dev
@@ -24,8 +25,9 @@ This project is structured as a **TurboRepo** with the following components:
      ```sh
      firebase emulators:start --only functions,auth,firestore
      ```
-4. The Firebase emulator runs on [`http://127.0.0.1:4000/`](http://127.0.0.1:4000/).
-5. Before using the application, populate the **auth** and **firestore** data.
+5. The Firebase emulator runs on [`http://127.0.0.1:4000/`](http://127.0.0.1:4000/).
+6. Before using the application, populate the **auth** and **firestore** data. Login using the account created in **auth**. Use collection ID 'users' on **firestore**
+7. Open the frontend on http://localhost:4001
 
 ## Others
 If you have any questions, feel free to contact me via:
