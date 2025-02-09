@@ -8,7 +8,7 @@ app.use(cors());
 app.use(express.json());
 
 
-app.get("/ping", (req, res) => {
+app.get("/ping", (_, res) => {
   res.send("pong");
 });
 app.use("/users", userRoutes);
