@@ -1,18 +1,28 @@
 import { User } from "@monorepo/entities";
 import { Actions } from "../models/base";
 import UserState from "../states/user";
-import { SET_USER } from "./userActionTypes";
+import { UPDATE_USER,SET_USERS } from "./userActionTypes";
 
 const initialState:UserState = {
-    user: undefined,
+    users: undefined,
   };
   
   const userReducer: any= (state = initialState, action:Actions<User>) => {
     switch (action.type) {
-      case SET_USER:
+      case UPDATE_USER:
         return {
           ...state,
-          user: action.payload,
+          users: state.users?.map(e=>{
+            if(e.id!=action.payload.id){
+              return action.payload;
+            }
+            return e
+          }),
+        };
+      case SET_USERS:
+        return {
+          ...state,
+          users: action.payload,
         };
       default:
         return state;

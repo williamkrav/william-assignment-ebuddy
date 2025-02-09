@@ -1,7 +1,9 @@
 const SET_USER = 'SET_USER'
+const SET_USERS = 'SET_USERS'
 const UPDATE_USER = 'UPDATE_USER'
 
 export {
+  SET_USERS,
   SET_USER,
   UPDATE_USER
 }

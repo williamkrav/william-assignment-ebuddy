@@ -13,7 +13,7 @@ export const updateUserData = async (req: Request, res: Response) => {
 
 export const fetchUserData = async (req: Request, res: Response) => {
   try {
-    const  userId = req.body.userId||req?.params.id;
+    const  userId = req?.params.id;
     const user = await userRepository.fetchUser(userId);
     if (!user) return res.status(404).json({ message: "User not found" });
     
