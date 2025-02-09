@@ -22,7 +22,7 @@ export default function LoginPage() {
     
       router.push('/user')
     } catch (err) {
-      setError('Please use email: williamkrav@gmail.com and password: 12345678')
+      setError('invalid login, please add the account on emulators')
     }
   }
 
