@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "target": "ES2020",        // Modern JavaScript output
+        "module": "CommonJS",      // Use CommonJS for Node.js compatibility
+        "moduleResolution": "node",
+        "strict": true,            // Enable strict type-checking options
+        "esModuleInterop": true,   // Enables default imports for common modules
+        "skipLibCheck": true,      // Skip library checks (useful for larger projects)
+        "forceConsistentCasingInFileNames": true,
+        "outDir": "./dist"         // Output folder for compiled files
+      },
+    "include": [
+      "src/**/*.ts",
+      "./index.ts"
+    ]
+  }
+  
